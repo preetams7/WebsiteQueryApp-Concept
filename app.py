@@ -9,7 +9,7 @@ st.set_page_config(layout='wide')
 st.header("Website Query (concept)")
 
 # File uploader widget
-url = st.file_uploader("Enter a website as resource to query")
+url = st.text_input("Enter a website as resource to query")
 
 
 
