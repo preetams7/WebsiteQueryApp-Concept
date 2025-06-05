@@ -8,17 +8,18 @@ st.set_page_config(layout='wide')
 
 st.header("Website Query (concept)")
 
-# File uploader widget
+#URL uploader widget
 url = st.text_input("Enter a website as resource to query")
 
-
-
+process_url_clicked = st.sidebar.button("Process URL")
 # Save file to desired location
-if url is not None:
+if process_url_clicked:
+    with st.spinner("Processing ..."):
+        retrieval_chain_ob = DocumentRetrievalChain(url)
+        retrieval_chain = retrieval_chain_ob.get_chain()
     
     question = st.text_input("Enter your question here", key="question")
-    retrieval_chain_ob = DocumentRetrievalChain(url)
-    retrieval_chain = retrieval_chain_ob.get_chain()
+    
 
     if question:
         with st.spinner("Thinking ..."):
